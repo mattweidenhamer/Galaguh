@@ -5,10 +5,6 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     [SerializeField] float moveModifier = 0f;
-    [SerializeField] float shootDelay = 0f;
-
-    private float timeSinceLastShot = 0f;
-    private bool canFire = true;
     private bool limitR = false;
     private bool limitL = false;
     private Rigidbody2D body;
@@ -25,18 +21,7 @@ public class Ship : MonoBehaviour
         if(!(limitR && movement>0) && !(limitL && movement<0)){
             transform.Translate(movement * moveModifier * Time.deltaTime, 0, 0);
         }
-        //Fire Controls
-        if (Input.GetButton("Fire1") && canFire) {
-            Debug.Log("Pew");
-            canFire = false;
-            timeSinceLastShot = 0f;
-        }
-        else if (!canFire){
-            timeSinceLastShot += Time.deltaTime;
-            if (timeSinceLastShot > shootDelay){
-                canFire = true;
-            }
-        }
+
 
         
     }
