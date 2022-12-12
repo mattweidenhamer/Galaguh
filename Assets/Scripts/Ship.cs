@@ -32,6 +32,9 @@ public class Ship : MonoBehaviour
         } else if(other.gameObject.tag == "border r"){
             limitR = true;
         }
+        else if(other.gameObject.tag == "enemy" || other.gameObject.tag == "obstacle"){
+            defeat();
+        }
     }
     private void OnCollisionExit2D(Collision2D other) {
         //Limit movement if you hit a border
@@ -40,9 +43,6 @@ public class Ship : MonoBehaviour
         }
         else if(other.gameObject.tag == "border r"){
             limitR = false;
-        }
-        else if(other.gameObject.tag == "enemy"){
-            defeat();
         }
     }
     private void defeat(){

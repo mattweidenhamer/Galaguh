@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece232f90fa77e745b112edcef3ce2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   moveSpeed: 3
-  forwardMove: 0.5
+  forwardMove: 1
+  turnDistance: 3
 --- !u!61 &4947457368374064453
 BoxCollider2D:
   m_ObjectHideFlags: 0

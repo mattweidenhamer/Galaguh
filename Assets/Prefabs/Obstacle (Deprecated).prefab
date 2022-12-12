@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7363378266206633824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.26, y: 0.52, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,7 +103,13 @@ MonoBehaviour:
   maxHP: 3
   minAngle: -40
   maxAngle: 40
-  speed: 1
+  minSpeed: 0
+  maxSpeed: 0
+  minSize: 0
+  maxSize: 0
+  bigSprite: {fileID: 21300000, guid: 76d4261389d5e70488970a659ba4927d, type: 3}
+  mediumSprite: {fileID: 21300000, guid: 67daecf445e2fe6488962af067818954, type: 3}
+  smallSprite: {fileID: 21300000, guid: 9128a43627f2f44499d9754c879e8220, type: 3}
 --- !u!50 &-5138982701962584315
 Rigidbody2D:
   serializedVersion: 4

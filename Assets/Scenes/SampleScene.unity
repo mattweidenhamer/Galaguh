@@ -281,6 +281,16 @@ MonoBehaviour:
   timeBetweenSpawns: 3
   enemy: {fileID: 4947457368374064441, guid: 0b8223244507e6f44a8efcee7a7217c2, type: 3}
   maxEnemies: 10
+  waypointList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,11 +784,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5615941814420431363, guid: 479dab44b71d9d1429a5a90545d4a883, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.35
+      value: -11.63
       objectReference: {fileID: 0}
     - target: {fileID: 5615941814420431363, guid: 479dab44b71d9d1429a5a90545d4a883, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.34
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5615941814420431363, guid: 479dab44b71d9d1429a5a90545d4a883, type: 3}
       propertyPath: m_LocalPosition.z

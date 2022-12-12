@@ -12,6 +12,9 @@ public class Obstacle : MonoBehaviour
     [SerializeField] float maxSpeed;
     [SerializeField] float minSize;
     [SerializeField] float maxSize;
+    [SerializeField] Sprite bigSprite;
+    [SerializeField] Sprite mediumSprite;
+    [SerializeField] Sprite smallSprite;
     private Collider2D thisCollider;
     private int hitpoints;
     private float size;
@@ -23,6 +26,7 @@ public class Obstacle : MonoBehaviour
         size = Random.Range(minSize, maxSize);
         thisCollider = GetComponent<Collider2D>();
         speed = Random.Range(minSpeed, maxSpeed);
+        setSprite();
 
 
         //Randomly choose an angle and assign it to angle
@@ -41,8 +45,25 @@ public class Obstacle : MonoBehaviour
                 Destroy(gameObject);
             }
             else{
-                //Set this object's sprite to a different one based on the number of hp available 
+                setSprite();
             }
+        }
+    }
+    void setSprite(){
+        switch (size){
+            case 3:
+            case 2:
+                GetComponent<SpriteRenderer>().sprite = mediumSprite;
+                GetComponent<CircleCollider2D>().radius = 0.3f;
+                break;
+            case 1:
+                GetComponent<SpriteRenderer>().sprite = smallSprite;
+                    GetComponent<CircleCollider2D>().radius = 0.2f;
+                break;
+            default:
+                GetComponent<SpriteRenderer>().sprite = bigSprite;
+                    GetComponent<CircleCollider2D>().radius = 0.4f;
+                break;
         }
     }
 }

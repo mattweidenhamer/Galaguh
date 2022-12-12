@@ -10,14 +10,14 @@ PrefabInstance:
     - target: {fileID: 954860937306132161, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+      objectReference: {fileID: 21300000, guid: 76d4261389d5e70488970a659ba4927d, type: 3}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: maxHP
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: minHP
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: speed
@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: maxAngle
-      value: 220
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: maxSpeed
@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: minAngle
-      value: 300
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7156247148267987384, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
       propertyPath: minSpeed
@@ -99,34 +99,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5138982701962584315, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
+    - {fileID: -3571199540167792814, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
 --- !u!1 &688199831787921136 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7363378266206633824, guid: d225c0510523e1c449aab3e877f7614f, type: 3}
   m_PrefabInstance: {fileID: 8044277332193583504}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &1318702156
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688199831787921136}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &1318702155
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,4 +123,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
