@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour
 {
     [SerializeField] float moveModifier = 0f;
+    [SerializeField] float timeUntilExitAfterDefeat;
     private bool limitR = false;
     private bool limitL = false;
     private Rigidbody2D body;
+    private Scoreboard scoreboard;
 
     private void Start() {
         body = GetComponent<Rigidbody2D>();
+        scoreboard = FindObjectOfType<Scoreboard>();
     }
     // Update is called once per frame
     void Update()
@@ -49,9 +53,18 @@ public class Ship : MonoBehaviour
     private void defeat(){
         limitL = true;
         limitR = true;
-        //Flash score on screen
+        GetComponent<Collider2D>().enabled = false;
+        scoreboard.defeated();
+        GetComponent<BlowUpScript>().startExplosion();
+        StartCoroutine(exitBackToMenu());
+        GetComponentInChildren<Guh>().enabled = false;
         //Some kind of menu?
     }
+    IEnumerator exitBackToMenu()
+    {
+        yield return new WaitForSeconds(timeUntilExitAfterDefeat);
+    }
+    
 
 
 }

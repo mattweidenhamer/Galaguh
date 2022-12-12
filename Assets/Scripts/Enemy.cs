@@ -10,15 +10,14 @@ public class Enemy : MonoBehaviour
     //[SerializeField] float forwardMove;
     [SerializeField] float turnDistance;
     [SerializeField] float timeToMoveForward;
+    [SerializeField] int hitPoints;
+    [SerializeField] int bountyPoints;
     private float direction = 1f;
     private bool stopMovement = false;
-    [SerializeField] int hitPoints;
     private bool moveForward = false;
+    
+
     float moveTime = 0f;
-    private int hp;
-    private void Start() {
-        hp = hitPoints;
-    }
     // Update is called once per frame
     void Update()
     {
@@ -48,23 +47,23 @@ public class Enemy : MonoBehaviour
         }
         else if (other.gameObject.tag == "bullet"){
             Debug.Log("Hit");
-            if(--hp <= 0){
-                blow_up();
-                
+            if(--hitPoints <= 0){
+                FindObjectOfType<Scoreboard>().gainScore(bountyPoints);
+                BlowUp();
             }
         }
         else if (other.gameObject.tag == "Obstacle"){
-            blow_up();
+            BlowUp();
         }
         else if (other.gameObject.tag == "Player"){
             stopMovement = true;
             //Do some kind of victory animation
         }
-
     }
-    private void blow_up(){
-        moveSpeed = 0f;
+    private void BlowUp()
+    {
+        moveSpeed = 0f;    
         GetComponent<Collider2D>().enabled = false;
-        
+        GetComponent<BlowUpScript>().startExplosion();
     }
 }

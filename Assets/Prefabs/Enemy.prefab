@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4947457368374064442}
   - component: {fileID: 4947457368374064443}
   - component: {fileID: 4947457368374064440}
+  - component: {fileID: 8052967662974303485}
   - component: {fileID: 4947457368374064453}
   - component: {fileID: 5379751382631160566}
-  - component: {fileID: -8178335793780348963}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -104,6 +104,26 @@ MonoBehaviour:
   turnDistance: 3
   timeToMoveForward: 0.25
   hitPoints: 3
+  bountyPoints: 10
+--- !u!114 &8052967662974303485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947457368374064441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f191ad4cbfc08043b672d5dbc907e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationFrames:
+  - {fileID: 21300000, guid: 413be0de0ad91884a9e680ee7d5534ff, type: 3}
+  - {fileID: 21300000, guid: 66ca2e9658be2784a9878f4ac231d016, type: 3}
+  - {fileID: 21300000, guid: ab489d267cdf7c24f835af7aefbc088e, type: 3}
+  - {fileID: 21300000, guid: 2032200d5f4e15b4e8ac0fa59055d353, type: 3}
+  - {fileID: 21300000, guid: 401d544b651633b4292ec2e36399011c, type: 3}
+  timeBetweenFrames: 0.35
 --- !u!61 &4947457368374064453
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,18 +171,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!111 &-8178335793780348963
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4947457368374064441}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
