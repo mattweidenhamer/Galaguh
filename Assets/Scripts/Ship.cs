@@ -33,6 +33,7 @@ public class Ship : MonoBehaviour
             limitR = true;
         }
         else if(other.gameObject.tag == "enemy" || other.gameObject.tag == "obstacle"){
+            Debug.Log("Ouch!");
             defeat();
         }
     }

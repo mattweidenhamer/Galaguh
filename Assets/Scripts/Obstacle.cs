@@ -66,4 +66,7 @@ public class Obstacle : MonoBehaviour
                 break;
         }
     }
+    private void OnBecameInvisible() {
+        Destroy(gameObject);
+    }
 }

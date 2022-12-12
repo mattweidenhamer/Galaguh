@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float timeBetweenSpawns;
     [SerializeField] GameObject enemy;
     [SerializeField] int maxEnemies;
-    [SerializeField] GameObject[] waypointList;
+    //[SerializeField] GameObject[] waypointList;
     private float timeSinceLastSpawn = 0f;
     
     private void Start() {
@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private void spawnEnemy() {
         if(transform.childCount < maxEnemies){
             GameObject newObject = Instantiate(enemy, transform.position, Quaternion.identity);
-            newObject.GetComponent<Enemy>().waypoints = waypointList;
+            //newObject.GetComponent<Enemy>().waypoints = waypointList;
         }
 
     }
