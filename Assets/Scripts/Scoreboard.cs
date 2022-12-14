@@ -15,22 +15,21 @@ public class Scoreboard : MonoBehaviour
     void Start()
     {
         scoreboardText = GetComponent<TMP_Text>();
-        scoreboardText.text = scoreboardPreText + score.ToString();
+        scoreboardText.text = scoreboardPreText + formatString(score.ToString());
         attachedFlasher = GetComponent<Flasher>();
         attachedFlasher.startFlasher();
     }
     public void gainScore(int scoreGain){
         score += scoreGain;
-        scoreboardText.text = scoreboardPreText + score.ToString();
+        scoreboardText.text = scoreboardPreText + formatString(score.ToString());
         attachedFlasher.startFlasher();
     }
+    
     public void defeated(){
-        gameOverText.text = "High score: " + score.ToString();
+        gameOverText.text = "High score: " + formatString(score.ToString());
+    }
+    public string formatString(string stringToFormat){
+        return string.Format("{0:000000}", stringToFormat);
     }
 
-}
-public class HighScoreEntry
-{
-    public string name;
-    public int score;
 }

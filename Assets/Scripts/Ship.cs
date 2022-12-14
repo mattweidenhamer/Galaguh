@@ -63,6 +63,7 @@ public class Ship : MonoBehaviour
     IEnumerator exitBackToMenu()
     {
         yield return new WaitForSeconds(timeUntilExitAfterDefeat);
+        SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
     }
     
 
