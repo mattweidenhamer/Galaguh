@@ -10,24 +10,35 @@ public class HighScores : MonoBehaviour
         public string username;
         public int highscore;
         public HighScore(String name, int score){
-            username = name;
+            username = name.Substring(0,3).ToUpper();
             highscore = score;
         }
     }
+    [SerializeField] string highScoreFileName;
 
     public HighScore[] scores;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scores = loadHighScores();
     }
+    public void checkIfHighScore(HighScore highScore){
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-    public void checkHighScores(HighScore highScore){
+    public HighScore[] loadHighScores(){
 
+        HighScore[] myScores = (HighScore[]) HighScoreHandler.loadData(highScoreFileName);
+        if (myScores == null){
+            myScores = new HighScore[6];
+        }
+        for (int i = 0; i < 5; i++ ){
+            if (myScores[i] == null){
+                myScores[i] = new HighScore("NOV", 0);
+            }
+        }
+        return myScores;
+    }
+    public void saveHighScores(){
+        HighScoreHandler.saveScore(scores, highScoreFileName);
     }
 }
