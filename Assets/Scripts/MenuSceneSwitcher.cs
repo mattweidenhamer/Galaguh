@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuSceneSwitcher : MonoBehaviour
 {
     public void changeScene(string sceneName){
+        Debug.Log("Changing scene");
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
