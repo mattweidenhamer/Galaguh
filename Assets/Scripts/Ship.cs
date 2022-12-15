@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Ship : MonoBehaviour
 {
     [SerializeField] float moveModifier = 0f;
-    [SerializeField] float timeUntilExitAfterDefeat;
     private bool limitR = false;
     private bool limitL = false;
     private Rigidbody2D body;
@@ -25,9 +24,6 @@ public class Ship : MonoBehaviour
         if(!(limitR && movement>0) && !(limitL && movement<0)){
             transform.Translate(movement * moveModifier * Time.deltaTime, 0, 0);
         }
-
-
-        
     }
     private void OnCollisionEnter2D(Collision2D other) {
         //Limit movement if you hit a border
@@ -37,7 +33,6 @@ public class Ship : MonoBehaviour
             limitR = true;
         }
         else if(other.gameObject.tag == "enemy" || other.gameObject.tag == "obstacle"){
-            Debug.Log("Ouch!");
             defeat();
         }
     }
@@ -56,16 +51,7 @@ public class Ship : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         scoreboard.defeated();
         GetComponent<BlowUpScript>().startExplosion();
-        StartCoroutine(exitBackToMenu());
         GetComponentInChildren<Guh>().enabled = false;
-        //Some kind of menu?
     }
-    IEnumerator exitBackToMenu()
-    {
-        yield return new WaitForSeconds(timeUntilExitAfterDefeat);
-        SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
-    }
-    
-
 
 }

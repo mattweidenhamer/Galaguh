@@ -40,19 +40,17 @@ public class Enemy : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "border r" || other.gameObject.tag == "border l"){
-            Debug.Log("Hit a border edge");
             direction *= -1f;
             moveForward = true;
             moveTime = 0f;
         }
         else if (other.gameObject.tag == "bullet"){
-            Debug.Log("Hit");
             if(--hitPoints <= 0){
                 FindObjectOfType<Scoreboard>().gainScore(bountyPoints);
                 BlowUp();
             }
         }
-        else if (other.gameObject.tag == "Obstacle"){
+        else if (other.gameObject.tag == "obstacle"){
             BlowUp();
         }
         else if (other.gameObject.tag == "Player"){

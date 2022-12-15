@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   turnDistance: 3
-  timeToMoveForward: 0.25
+  timeToMoveForward: 0.5
   hitPoints: 3
   bountyPoints: 10
 --- !u!114 &8052967662974303485

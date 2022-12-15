@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private void spawnEnemy() {
         if(transform.childCount < maxEnemies){
             GameObject newObject = Instantiate(enemy, transform.position, Quaternion.identity);
+            newObject.transform.parent = transform;
             //newObject.GetComponent<Enemy>().waypoints = waypointList;
         }
 

@@ -22,7 +22,6 @@ public class Guh : MonoBehaviour
         //Fire Controls
         if (Input.GetButton("Fire1") && canFire) {
             Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            Debug.Log("Pew");
             canFire = false;
             timeSinceLastShot = 0f;
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Scoreboard : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class Scoreboard : MonoBehaviour
         scoreboardText = GetComponent<TMP_Text>();
         scoreboardText.text = scoreboardPreText + formatString(score.ToString());
         attachedFlasher = GetComponent<Flasher>();
-        attachedFlasher.startFlasher();
     }
     public void gainScore(int scoreGain){
         score += scoreGain;
@@ -27,9 +27,19 @@ public class Scoreboard : MonoBehaviour
     
     public void defeated(){
         gameOverText.text = "High score: " + formatString(score.ToString());
+        gameOverText.GetComponent<Flasher>().startFlasher();
+        StartCoroutine(exitBackToMenu());
+        
     }
     public string formatString(string stringToFormat){
         return string.Format("{0:000000}", stringToFormat);
     }
-
+    IEnumerator exitBackToMenu()
+    {
+        Debug.Log("Preparing to exit to menu.");
+        print(Time.timeScale.ToString());
+        yield return new WaitForSecondsRealtime(5f);
+        Debug.Log("Done waiting, exiting to menu.");
+        SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
+    }
 }

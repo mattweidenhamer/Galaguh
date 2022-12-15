@@ -8,8 +8,7 @@ public class Flasher : MonoBehaviour
     [SerializeField] int timesToFlash;
     [SerializeField] float timeBetweenFlash;
     [SerializeField] Color32 defaultTextColor;
-    [SerializeField] Color32 flashColor1;
-    [SerializeField] Color32 flashColor2;
+    [SerializeField] Color32[] flashColors;
     private int currentColor = 0;
     private int flashedTimes = 0;
     private float timeSinceLastFlash = 0f;
@@ -35,22 +34,12 @@ public class Flasher : MonoBehaviour
     public void flash()
     {
         timeSinceLastFlash = 0f;
-        switch (++currentColor){
-            case 1:
-                Debug.Log("Flash to color 1");
-                scoreboardText.color = flashColor1;
-                break;
-            case 2:
-                Debug.Log("Flash to color 2");
-                scoreboardText.color = flashColor2;
-                break;
-            default:
-                Debug.Log("Flash to default color");
-                scoreboardText.color = defaultTextColor;
-                currentColor = 0;
-                break;
+        if(++currentColor >= flashColors.Length){
+            currentColor = 0;
         }
+        scoreboardText.color = flashColors[currentColor];
         if (++flashedTimes >= timesToFlash){
+            Debug.Log(flashedTimes.ToString());
             isFlashing = false;
             scoreboardText.color = defaultTextColor;
         }
@@ -58,12 +47,9 @@ public class Flasher : MonoBehaviour
     public void startFlasher()
     {
         currentColor = 0;
-        timesToFlash = 0;
+        flashedTimes = 0;
         isFlashing = true;
         flash();
-    }
-    public void changeColor(Color32 color){
-        scoreboardText.color = new Color();
     }
 }
 
