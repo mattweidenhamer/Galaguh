@@ -13,6 +13,10 @@ public class HighScores : MonoBehaviour
         public HighScore(int score){
             highscore = score;
         }
+        public override string ToString()
+        {
+            return highscore.ToString();
+        }
     }
     [SerializeField] string highScoreFileName;
     public HighScore[] scores;
@@ -29,25 +33,28 @@ public class HighScores : MonoBehaviour
         updateScores();
     }
     public void checkIfHighScore(int score){
-        int indexHigherThan = 0;
-        foreach(HighScore highScore in scores){
-            if(score > highScore.highscore){
-                indexHigherThan++;
+        int scoreRank = 6;
+        if(scores[5].highscore < score){
+            while (scores[scoreRank - 1].highscore < score){
+                Debug.Log("Score is higher than position " + scoreRank.ToString());
+                if(!(scoreRank >= scores.Length)){
+                    scores[scoreRank] = scores[scoreRank - 1];
+                }
+                scoreRank--;
+                if (scoreRank == 0){
+                    break;
+                }
             }
+            scores[scoreRank] = new HighScore(score);  
         }
-        
-        if(indexHigherThan > 0){
-            for (int i = 5; i < 6 - indexHigherThan && i > 0; i--){
-                scores[i] = scores[i - 1];
-            }
-            scores[6 - indexHigherThan] = new HighScore(score);
-            updateScores();
-            saveHighScores();
-        }
+
+        updateScores();
+        saveHighScores();
     }
     public HighScore[] loadHighScores(){
         HighScore[] myScores = (HighScore[]) HighScoreHandler.loadData(highScoreFileName);
         if (myScores == null){
+            Debug.Log("Loaded null object");
             myScores = new HighScore[6];
         }
         for (int i = 0; i < 6; i++ ){
