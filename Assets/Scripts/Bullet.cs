@@ -5,18 +5,30 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
+    [SerializeField] Sprite explodeSprite;
+    [SerializeField] float timeToDespawn;
+    bool stopped = false;
     void Update()
     {
-        transform.Translate(0, moveSpeed * Time.deltaTime, 0);
+        if(!stopped){
+            transform.Translate(0, moveSpeed * Time.deltaTime, 0);
+        }
+
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("Hit");
-        Destroy(gameObject);
+        StartCoroutine("explode");
     }
     private void OnBecameInvisible() {
         Destroy(gameObject);
     }
+    IEnumerator explode(){
+        stopped=true;
+        GetComponent<SpriteRenderer>().sprite = explodeSprite;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        Debug.Log("Started exploding");
+        yield return new WaitForSeconds(timeToDespawn);
+        Debug.Log("Done exploding, time to destroy!");
+        Destroy(gameObject);
+    }
+    
 }

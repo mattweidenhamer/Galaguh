@@ -38,7 +38,6 @@ public class Scoreboard : MonoBehaviour
         Debug.Log("Preparing to exit to menu.");
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.Save();
-        print(Time.timeScale.ToString());
         yield return new WaitForSecondsRealtime(5f);
         SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
     }
